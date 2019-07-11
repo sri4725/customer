@@ -18,10 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.sreedhar.model.CustomerModel;
+import com.sreedhar.model.ProductEntity;
 import com.sreedhar.service.CustomerServiceImpl;
+import com.sreedhar.service.ProductService;
 
 @RestController
 public class CustomerController {
+	
+	@Autowired
+	private ProductService productService;
  
  @Autowired
  private CustomerServiceImpl customerService;
@@ -29,6 +34,10 @@ public class CustomerController {
  @GetMapping("/customer/")
  public List<CustomerModel> getAllCustomer(){
   return customerService.getAllCustomer();
+ }
+ @GetMapping("/product/")
+ public List<ProductEntity> getAllProducts(){
+  return productService.getAllProducts();
  }
  
  @GetMapping("/customer/{customerId}")
